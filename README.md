@@ -15,3 +15,13 @@ and git ready to set up and start creating CI/CD pipelines.
 
 - `terraform init`
 - `terraform apply` or `terraform apply -auto-approve`
+
+## Setup Jenkins
+
+- Once terraform apply has ended run `terraform state show module.ec2.aws_instance.ec2` and look for public_ip value
+- Open in the web browser http://<public_ip>:8080 note: replace public_ip for the value found in the step before
+- Once the jenkins ui appears, got to aws console and connect to the ec2 instance via ec2 connect to access from the web browser https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Connect-using-EC2-Instance-Connect.html
+- Once you are inside the ec2 instance run `sudo cat /var/lib/jenkins/secrets/initialAdminPassword` to get the admin password and type it on the web ui
+- Create a new Jenkins user
+- install recommended plugins & you are ready to start using jenkins and create pipelines
+
