@@ -1,5 +1,7 @@
 # terraform-ec2-jenkins
 
+![jenkins.png](images%2Fjenkins.png)
+
 This repository uses terraform to provision an ec2 instance on aws, installing only on the first boot  jenkins along with docker, git y maven. Once the instance is up you only need to follow a few simple steps once and start creating CI/CD pipelines.
 
 If you are inside the AWS free tier, you can run this project practically for free, just remember to stop your instance once you are done with your tests to avoid bill surprises. next time you restart the instance, it will still have your previous configuration.
