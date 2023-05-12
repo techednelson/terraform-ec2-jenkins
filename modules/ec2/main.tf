@@ -8,16 +8,37 @@ resource "aws_instance" "ec2" {
   user_data                   = file("${path.module}/ec2-user-data.sh")
 
   connection {
+    type        = "ssh"
     user        = "ec2-user"
     private_key = tls_private_key.generated.private_key_pem
     host        = self.public_ip
+    timeout     = "2m"
   }
 
   provisioner "local-exec" {
     command = "chmod 600 ${local_file.private_key_pem.filename}"
   }
 
+  provisioner "file" {
+    source      = "${path.module}/plugins-installer.sh"
+    destination = "/tmp/plugins-installer.sh"
+  }
+
+  provisioner "file" {
+    source      = "${path.module}/plugins.txt"
+    destination = "/tmp/plugins.txt"
+  }
+
+  provisioner "remote-exec" {
+    inline = [
+      "sudo mv /tmp/plugins.txt .",
+      "sudo mv /tmp/plugins-installer.sh ."
+    ]
+  }
+
   tags = {
-    Name = "${var.name}-ec2"
+    Name        = "${var.name}-ec2"
+    Terraform   = "true"
+    Environment = "dev"
   }
 }

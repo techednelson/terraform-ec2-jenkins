@@ -17,9 +17,15 @@ sudo systemctl start jenkins
 sudo yum install docker -y
 sudo service docker start
 sudo usermod -a -G docker ec2-user
-sudo chmod 666 /var/run/docker.sock
-sudo systemctl enable docker
-sudo systemctl start docker
+sudo systemctl enable docker.service
+sudo systemctl start docker.service
+#sudo chmod 666 /var/run/docker.sock
 
 # install git
 sudo yum install git -y
+
+# install maven
+sudo yum install maven -y
+
+# install jq
+sudo yum install jq -y
