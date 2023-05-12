@@ -48,5 +48,8 @@ If you still have the `ec2 connect` browser window to access via command line to
  - Run wait a few seconds until you can run `sudo systemctl status jenkins`. Jenkins should be active & running.
  - Refresh the web browser `http://<public_ip>:8080` & enter again your username and password, you should see under Manage Jenkins > Plugin Manager > Installed Plugins, the list of plugins installed from `plugins.txt `
 
+## Important Note
+Everytime you stop & start the ec2 instance you need to run from ec2 connect or ssh form your local pc the command `sudo chmod 666 /var/run/docker.sock` to avoid issues with docker
+
 Happy CI/CD pipelines!!!
 

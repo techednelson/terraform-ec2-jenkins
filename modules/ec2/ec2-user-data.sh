@@ -19,7 +19,7 @@ sudo service docker start
 sudo usermod -a -G docker ec2-user
 sudo systemctl enable docker.service
 sudo systemctl start docker.service
-#sudo chmod 666 /var/run/docker.sock
+sudo chmod 666 /var/run/docker.sock
 
 # install git
 sudo yum install git -y
