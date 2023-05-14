@@ -1,5 +1,10 @@
+resource "aws_eip" "ec2_eip" {
+  instance = aws_instance.ec2.id
+  vpc      = true
+}
+
 resource "aws_instance" "ec2" {
-  ami                         = "ami-03aefa83246f44ef2"
+  ami                         = "ami-03aefa83246f44ef2" # AmazonLinux 2023
   instance_type               = "t2.micro"
   subnet_id                   = var.subnet_id
   vpc_security_group_ids      = var.security_groups_ids
